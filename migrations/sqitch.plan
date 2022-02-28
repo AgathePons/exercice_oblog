@@ -1,0 +1,5 @@
+%syntax-version=1.0.0
+%project=oblog
+%uri=git@github.com:O-clock-Zagreus/data-atelier-oblog-AgathePons.git
+
+init-db 2022-02-28T09:06:22Z AgathePons <student@teleporter> # init the project, creating the tables
