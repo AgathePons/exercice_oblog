@@ -18,8 +18,8 @@ package-lock.json
 *.gz
 
 #log
-**/*.log
-**/*.log.*
+logs/*.log
+logs/*.log.*
 
 #vscode
 .vs_code/

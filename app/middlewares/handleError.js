@@ -1,11 +1,11 @@
 const debug = require('debug')('handleError');
-// logger
+const logger = require('../helpers/logger');
 const ApiError = require('../errors/apiError');
 
 // eslint-disable-next-line no-unused-vars
 const handleError = (error, _req, res, _next) => {
   if (!error.status || error.status !== 404) {
-    // logger
+    logger.error(error);
   } else {
     debug(error);
   }
