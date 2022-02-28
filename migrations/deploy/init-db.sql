@@ -13,7 +13,7 @@ CREATE TABLE article (
   slug TEXT NOT NULL UNIQUE,
   excerpt TEXT NOT NULL UNIQUE,
   content TEXT NOT NULL UNIQUE,
-  category INT NOT NULL REFERENCES category(id)
+  category_id INT NOT NULL REFERENCES category(id)
 );
 
 COMMIT;
