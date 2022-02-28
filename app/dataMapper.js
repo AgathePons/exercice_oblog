@@ -1,20 +1,16 @@
+const debug = require('debug')('dataMapper');
 const pool = require('./dbPool');
+const ApiError = require('./errors/apiError');
 
 const dataMapper = {
   async getAllPosts() {
-    try {
-      const query = 'SELECT * FROM post;';
-      const data = (await pool.query(query)).rows;
-      if (!data) {
-        const errorMsg = `No data found for ${query}`;
-        return errorMsg;
-      }
-      return data;
-    } catch (err) {
-      console.error('getAllposts error:', err);
-      const catchErrorMsg = 'Error catched in console';
-      return catchErrorMsg;
+    const query = 'SELECT * FROM post;';
+    debug(`dataMapper > getAllPosts(): ${query}`);
+    const data = (await pool.query(query)).rows;
+    if (!data) {
+      throw new ApiError('No data found for getAllPost', 500);
     }
+    return data;
   },
 };
 
