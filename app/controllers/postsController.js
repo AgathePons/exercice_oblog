@@ -3,8 +3,10 @@ const dataMapper = require('../dataMapper');
 
 const postsController = {
   /**
-   * Get all posts
-   * @returns {object} json of all posts
+   * Retrieve all posts
+   * @param {Request} _req
+   * @param {Response} res
+   * @returns {object} 200 - json of all posts
    */
   async getAllPosts(_req, res) {
     debug('GET /posts getAllPosts() called');
@@ -12,8 +14,9 @@ const postsController = {
     return res.json(posts);
   },
   /**
-   * Get one post
+   * Retrieve one post
    * @param {object} req id of the post in req.params.id
+   * @param {Response} res
    * @returns {object} json of the post
    */
   async getOnePost(req, res) {
@@ -23,7 +26,7 @@ const postsController = {
     return res.json(post);
   },
   /**
-   * Get all posts from a category by category id
+   * Retrieve all posts from a category by category id
    * @param {object} req id of the category in req.params.id
    * @returns {object} json of the posts from the category
    */
@@ -34,8 +37,9 @@ const postsController = {
     return res.json(posts);
   },
   /**
-   * Post one post from json body in request
+   * Send one post from json body in request
    * @param {object} req data from the post request in req.body
+   * @param {Response} res
    * @returns {object} json of the created post
    */
   async postOnepost(req, res) {

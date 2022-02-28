@@ -6,7 +6,7 @@ const logger = require('./helpers/logger');
 
 const dataMapper = {
   /**
-   * Get all the posts
+   * Retrieve all the posts
    * @returns {object} return array of all posts
    */
   async getAllPosts() {
@@ -21,7 +21,7 @@ const dataMapper = {
     return data;
   },
   /**
-   * Get one post by id
+   * Retrieve one post by id
    * @param {number} id id of the post
    * @returns {object} return object of the post
    */
@@ -38,7 +38,7 @@ const dataMapper = {
     return data;
   },
   /**
-   * Get all posts from a category by category id
+   * Retrieve all posts from a category by category id
    * @param {number} id id of the category
    * @returns {object} return array of all posts from the category
    */
@@ -55,7 +55,7 @@ const dataMapper = {
     return data;
   },
   /**
-   * Post one post from json body in request
+   * Send one post from json body in request
    * @param {object} data data from the post request body
    * @returns {object} return object of the created post
    */
@@ -72,7 +72,7 @@ const dataMapper = {
     return returnedData;
   },
   /**
-   * Get all the categories
+   * Retrieve all the categories
    * @returns {object} return array of all categories
    */
   async getAllCategories() {

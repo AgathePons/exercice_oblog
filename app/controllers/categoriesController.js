@@ -3,7 +3,7 @@ const dataMapper = require('../dataMapper');
 
 const categoriesController = {
   /**
-   * Get all categories
+   * Retrieve all categories
    * @returns {object} json of all categories
    */
   async getAllCategories(_req, res) {
