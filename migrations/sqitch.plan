@@ -3,3 +3,5 @@
 %uri=git@github.com:O-clock-Zagreus/data-atelier-oblog-AgathePons.git
 
 init-db 2022-02-28T09:06:22Z AgathePons <student@teleporter> # init the project, creating the tables
+route-domain 2022-02-28T09:36:06Z AgathePons <student@teleporter> # create domain with regex for route
+slug_domain 2022-02-28T09:54:36Z AgathePons <student@teleporter> # create domain with regex for slug
