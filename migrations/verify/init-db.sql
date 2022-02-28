@@ -2,7 +2,7 @@
 
 BEGIN;
 
-SELECT * FROM article WHERE false;
+SELECT * FROM post WHERE false;
 
 SELECT * FROM category WHERE false;
 

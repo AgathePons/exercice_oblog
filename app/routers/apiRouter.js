@@ -6,6 +6,10 @@ const mainController = require('../controllers/mainController');
 
 const router = Router();
 
+// test router
 router.get('/', mainController.homePage);
+
+// posts
+router.get('/posts', mainController.getAllPosts);
 
 module.exports = router;

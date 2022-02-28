@@ -2,9 +2,9 @@
 
 BEGIN;
 
-ALTER TABLE article
+ALTER TABLE post
   ALTER COLUMN slug TYPE TEXT;
 
-DROP DOMAIN article_slug;
+DROP DOMAIN post_slug;
 
 COMMIT;

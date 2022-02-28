@@ -2,6 +2,6 @@
 
 BEGIN;
 
-DROP TABLE category, article;
+DROP TABLE category, post;
 
 COMMIT;
