@@ -5,7 +5,6 @@ const app = express();
 
 app.use(express.static('./public'));
 
-//! useless?
 app.use(express.json());
 
 app.use(router);

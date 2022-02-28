@@ -8,5 +8,23 @@
 ### GET /v1/posts
 GET {{host}}/v1/posts
 
+### GET /v1/posts/:id
+GET {{host}}/v1/posts/2
+
+### GET /v1/posts/category/:id
+GET {{host}}/v1/posts/category/3
+
+### POST /v1/cadex
+POST {{host}}/v1/posts
+Content-Type: application/json
+
+{
+    "title": "my awesome post",
+    "slug": "i-m-so-awesome",
+    "excerpt": "Lorem blabla <em>ipsum dolor</em> sit amet",
+    "content": "Ut enim blabla ad <em>minim veniam</em>, quis nostrud exercitation ullamco <strong>laboris nisi</strong> ut aliquip ex ea commodo consequat.",
+    "category_id": 5
+}
+
 ### GET /v1/categories
 GET {{host}}/v1/categories

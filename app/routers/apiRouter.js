@@ -32,6 +32,13 @@ router.get('/posts/:id([0-9])', postsController.getOnePost);
 router.get('/posts/category/:id([0-9])', postsController.getAllPostsByCategory);
 
 /**
+ * POST /v1/posts
+ * @summary Post one post from json body in request
+ * @return {object} json
+ */
+router.post('/posts', postsController.postOnepost);
+
+/**
  * GET /v1/categories
  * @summary Get all categories
  * @return {object} json
