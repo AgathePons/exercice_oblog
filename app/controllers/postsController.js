@@ -1,12 +1,13 @@
 const debug = require('debug')('postsController');
 const dataMapper = require('../dataMapper');
+const ApiError = require('../errors/apiError');
 
 const postsController = {
   /**
    * Retrieve all posts
    * @param {Request} _req
    * @param {Response} res
-   * @returns {object} 200 - json of all posts
+   * @returns {string} Route API JSON response
    */
   async getAllPosts(_req, res) {
     debug('GET /posts getAllPosts() called');
@@ -17,12 +18,15 @@ const postsController = {
    * Retrieve one post
    * @param {object} req id of the post in req.params.id
    * @param {Response} res
-   * @returns {object} json of the post
+   * @returns {string} Route API JSON response
    */
   async getOnePost(req, res) {
     const { id } = req.params;
     debug(`GET /posts/${id} getAllPosts() called`);
     const post = await dataMapper.getOnePost(id);
+    if (!post) {
+      throw new ApiError('Post not found', { statusCode: 404 });
+    }
     return res.json(post);
   },
   /**

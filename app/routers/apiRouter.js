@@ -2,65 +2,63 @@ const { Router } = require('express');
 const mainController = require('../controllers/mainController');
 const postsController = require('../controllers/postsController');
 const categoriesController = require('../controllers/categoriesController');
+const controllerHandler = require('../helpers/controllerHandler');
 // TODO validator
 // TODO schema
-// TODO middleware wrapper
 
 const router = Router();
 
 // test router
 router.get('/', mainController.homePage);
 
+// ############## POST ############## //
 /**
  * GET /v1/posts
  * @summary Get all posts
  * @tags Post
- * @return {object} 200 - success response - application/json
+ * @return {[Post]} 200 - success response - application/json
  */
-router.get('/posts', postsController.getAllPosts);
+router.get('/posts', controllerHandler(postsController.getAllPosts));
+
 /**
  * GET /v1/posts/{id}
  * @summary Get one post by id (id has to be a number)
  * @tags Post
- * @param {number} id.path - id of the post
- * @return {object} 200 - success response - application/json
+ * @param {number} id.path.required - id of the post
+ * @return {Post} 200 - success response - application/json
+ * @return {ApiError} 400 - Bad request response - application/json
+ * @return {ApiError} 404 - Post not found - application/json
  */
-router.get('/posts/:id([0-9])', postsController.getOnePost);
+router.get('/posts/:id([0-9])', controllerHandler(postsController.getOnePost));
 
 /**
  * GET /v1/posts/category/{id}
  * @summary Get all posts from a category by category id (id has to be a number)
  * @tags Post
- * @param {number} id.path - id of the category
- * @return {object} 200 - success response - application/json
+ * @param {number} id.path.required - id of the category
+ * @return {[Post]} 200 - success response - application/json
+ * @return {ApiError} 400 - Bad request response - application/json
+ * @return {ApiError} 404 - Post not found - application/json
  */
-router.get('/posts/category/:id([0-9])', postsController.getAllPostsByCategory);
-
-/**
- * A Post :
- * @typedef {object} PostArticle
- * @property {string} title.required - The title
- * @property {string} slug.required - The slug (no whitespace, no special characters, kebab-case)
- * @property {string} excerpt.required - The excerpt
- * @property {string} content.required - The content
- * @property {number} category_id.required - The category id
- */
+router.get('/posts/category/:id([0-9])', controllerHandler(postsController.getAllPostsByCategory));
 
 /**
  * POST /v1/posts
  * @summary Post one post from json body in request
  * @tags Post
- * @param {PostArticle} request.body.required - Data of the post object in request body - application/json
+ * @param {InputPost} request.body.required - Data of the post object in request body - application/json
  * @return {object} 200 - success response - application/json
+ * @return {ApiError} 400 - Bad request response - application/json
  */
-router.post('/posts', postsController.postOnepost);
+router.post('/posts', controllerHandler(postsController.postOnepost));
 
+// ############## CATEGORY ############## //
 /**
  * GET /v1/categories
  * @summary Get all categories
  * @tags Category
- * @return {object} 200 - success response - application/json
+ * @return {[Category]} 200 - success response - application/json
  */
-router.get('/categories', categoriesController.getAllCategories);
+router.get('/categories', controllerHandler(categoriesController.getAllCategories));
 
 module.exports = router;

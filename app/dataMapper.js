@@ -11,12 +11,12 @@ const dataMapper = {
    */
   async getAllPosts() {
     const query = 'SELECT * FROM post;';
-    debug(`dataMapper > getAllPosts(): ${query}`);
+    debug(`> getAllPosts(): ${query}`);
     debug('Log lvl error created for test');
     logger.error(`test logger error and query: ${query}`);
     const data = (await pool.query(query)).rows;
     if (!data) {
-      throw new ApiError('No data found for getAllPost', 500);
+      throw new ApiError('No data found for getAllPost', { statusCode: 500 });
     }
     return data;
   },
@@ -30,10 +30,10 @@ const dataMapper = {
       text: 'SELECT * FROM post where id=$1;',
       values: [id],
     };
-    debug(`dataMapper > getOnePost(id): ${query.text}`);
+    debug(`> getOnePost(id): ${query.text} -> $: ${query.values}`);
     const data = (await pool.query(query)).rows[0];
     if (!data) {
-      throw new ApiError('No data found for getOnePost', 500);
+      throw new ApiError('No data found for getOnePost', { statusCode: 500 });
     }
     return data;
   },
@@ -47,10 +47,10 @@ const dataMapper = {
       text: 'SELECT * FROM post where category_id=$1;',
       values: [id],
     };
-    debug(`dataMapper > getAllPostsByCategory(id): ${query.text}`);
+    debug(`> getAllPostsByCategory(id): ${query.text} -> $: ${query.values}`);
     const data = (await pool.query(query)).rows;
     if (!data) {
-      throw new ApiError('No data found for getAllPostsByCategory', 500);
+      throw new ApiError('No data found for getAllPostsByCategory', { statusCode: 500 });
     }
     return data;
   },
@@ -64,10 +64,10 @@ const dataMapper = {
     const query = {
       text: `INSERT INTO post(title, slug, excerpt, content, category_id)
         VALUES ($1, $2, $3, $4, $5)
-        RETURNING *`,
+        RETURNING *;`,
       values: [title, slug, excerpt, content, category_id],
     };
-    debug(`dataMapper > postOnePost(data): ${query.text}`);
+    debug(`> postOnePost(data): ${query.text}`);
     const returnedData = (await pool.query(query)).rows[0];
     return returnedData;
   },
@@ -77,10 +77,10 @@ const dataMapper = {
    */
   async getAllCategories() {
     const query = 'SELECT * FROM category;';
-    debug(`dataMapper > getAllCategories(): ${query}`);
+    debug(`> getAllCategories(): ${query}`);
     const data = (await pool.query(query)).rows;
     if (!data) {
-      throw new ApiError('No data found for getAllCategories', 500);
+      throw new ApiError('No data found for getAllCategories', { statusCode: 500 });
     }
     return data;
   },
