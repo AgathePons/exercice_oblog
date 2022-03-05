@@ -6,7 +6,7 @@
  * @property {string} excerpt - excerpt of the post
  * @property {string} content - content of the post
  * @property {number} category_id - category id of the post
- * property {string} category - category label of the post (not implemented yet)
+ * @property {string} category - category label of the post
  */
 
 /**

@@ -10,13 +10,13 @@ const dataMapper = {
    * @returns {object} return array of all posts
    */
   async getAllPosts() {
-    const query = 'SELECT * FROM post;';
+    const query = 'SELECT * FROM post_with_category;';
     debug(`> getAllPosts(): ${query}`);
     debug('Log lvl error created for test');
     logger.error(`test logger error and query: ${query}`);
     const data = (await pool.query(query)).rows;
     if (!data) {
-      throw new ApiError('No data found for getAllPost', { statusCode: 500 });
+      throw new ApiError('No data found for getAllPost', 500);
     }
     return data;
   },
@@ -27,13 +27,13 @@ const dataMapper = {
    */
   async getOnePost(id) {
     const query = {
-      text: 'SELECT * FROM post where id=$1;',
+      text: 'SELECT * FROM post_with_category where id=$1;',
       values: [id],
     };
     debug(`> getOnePost(id): ${query.text} -> $: ${query.values}`);
     const data = (await pool.query(query)).rows[0];
     if (!data) {
-      throw new ApiError('No data found for getOnePost', { statusCode: 500 });
+      throw new ApiError(`No data found for getOnePost for id=${query.values[0]}`, 500);
     }
     return data;
   },
@@ -44,13 +44,13 @@ const dataMapper = {
    */
   async getAllPostsByCategory(id) {
     const query = {
-      text: 'SELECT * FROM post where category_id=$1;',
+      text: 'SELECT * FROM post_with_category where category_id=$1;',
       values: [id],
     };
     debug(`> getAllPostsByCategory(id): ${query.text} -> $: ${query.values}`);
     const data = (await pool.query(query)).rows;
     if (!data) {
-      throw new ApiError('No data found for getAllPostsByCategory', { statusCode: 500 });
+      throw new ApiError(`No data found for getAllPostsByCategory for id=${query.value[0]}`, 500);
     }
     return data;
   },
@@ -80,7 +80,7 @@ const dataMapper = {
     debug(`> getAllCategories(): ${query}`);
     const data = (await pool.query(query)).rows;
     if (!data) {
-      throw new ApiError('No data found for getAllCategories', { statusCode: 500 });
+      throw new ApiError('No data found for getAllCategories', 500);
     }
     return data;
   },

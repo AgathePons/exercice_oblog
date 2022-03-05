@@ -19,11 +19,11 @@ POST {{host}}/v1/posts
 Content-Type: application/json
 
 {
-    "title": "New post about stuff",
-    "slug": "new-post-about-stuff",
-    "excerpt": "Something about this, and that, so great",
-    "content": "Ut enimblabla ad <em>minim veniam</em>, quis nostrud exercitation ullamco <strong>laboris nisi</strong> ut aliquip ex ea commodo consequat.",
-    "category_id": 3
+    "title": "Hey, it's me again",
+    "slug": "hey-it-s-me-again",
+    "excerpt": "I have something new to say...",
+    "content": "Meh.Ut enimblabla ad <em>minim veniam</em>, <strong>laboris nisi</strong>.",
+    "category_id": 4
 }
 
 ### GET /v1/categories

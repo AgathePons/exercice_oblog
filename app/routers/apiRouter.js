@@ -3,8 +3,8 @@ const mainController = require('../controllers/mainController');
 const postsController = require('../controllers/postsController');
 const categoriesController = require('../controllers/categoriesController');
 const controllerHandler = require('../helpers/controllerHandler');
-// TODO validator
-// TODO schema
+const validate = require('../validation/validator');
+const postPOSTSchema = require('../validation/postPOSTSchema');
 
 const router = Router();
 
@@ -50,7 +50,7 @@ router.get('/posts/category/:id([0-9])', controllerHandler(postsController.getAl
  * @return {object} 200 - success response - application/json
  * @return {ApiError} 400 - Bad request response - application/json
  */
-router.post('/posts', controllerHandler(postsController.postOnepost));
+router.post('/posts', validate('body', postPOSTSchema), controllerHandler(postsController.postOnepost));
 
 // ############## CATEGORY ############## //
 /**
